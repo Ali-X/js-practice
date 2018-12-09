@@ -2,18 +2,18 @@ let startTimeStr = prompt("Enter sale start time");
 let endTimeStr = prompt("Enter sale end time");
 let nowTimeStr = prompt("Enter now time");
 
-if (startTimeStr == null || endTimeStr == null || nowTimeStr == null
-    || startTimeStr === "" || endTimeStr === "" || nowTimeStr === "") {
+if (!startTimeStr || !endTimeStr || !nowTimeStr) {
     console.log("Please, enter all time")
 } else {
-    var startTime = Number(startTimeStr);
-    var endTime = Number(endTimeStr);
-    var nowTime = Number(nowTimeStr);
+    let startTime = Number(startTimeStr);
+    let endTime = Number(endTimeStr);
+    let nowTime = Number(nowTimeStr);
 
     if (isNaN(startTime) || isNaN(endTime) || isNaN(nowTime)) {
         console.log("Please, enter numeric time")
+    } else if (startTime < 0 || startTime > 24 || endTime < 0 || endTime > 24 || nowTime < 0 || nowTime > 24) {
+        console.log("Please, enter 24 format time")
     } else {
-        debugger;
         if (startTime <= endTime) {
             if (nowTime >= startTime && nowTime <= endTime) {
                 console.log("It's sale!!!!!!!!")
